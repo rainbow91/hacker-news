@@ -1,28 +1,37 @@
-package org.superbiz.moviefun.news;
+package org.superbiz.moviefun.stories;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 @Table(name = "story")
 public class Story {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+    private int rating;
     private String title;
     private String url;
 
-    public Story(int id, String title, String url) {
+    public Story(int id, String title, String url, int rating) {
         this.id = id;
+        this.title = title;
+        this.url = url;
+        this.rating = rating;
+    }
+
+    public Story(String title, String url, int rating) {
+        this.id = id;
+        this.rating = rating;
         this.title = title;
         this.url = url;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -40,5 +49,13 @@ public class Story {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }
